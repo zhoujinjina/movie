@@ -96,6 +96,7 @@ const Header = () => {
 
                 <div className="mobileMenuItems">
                     <HiOutlineSearch onClick={openSearch} />
+                  {/* 移动端的菜单是否显示 */}
                     {mobileMenu ? (
                         <VscChromeClose onClick={() => setMobileMenu(false)} />
                     ) : (
