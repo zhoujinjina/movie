@@ -1,11 +1,21 @@
-import React from 'react'
-import './style.scss'
-const Footer = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+import React from "react";
+import {
+    FaFacebookF,
+    FaInstagram,
+    FaTwitter,
+    FaLinkedin,
+} from "react-icons/fa";
 
-export default Footer
+import ContentWrapper from "../contentWrapper/ContentWrapper";
+
+import "./style.scss";
+
+const Footer = () => {
+    return (
+        <footer className="footer">
+           
+        </footer>
+    );
+};
+
+export default Footer;
