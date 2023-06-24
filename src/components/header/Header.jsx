@@ -23,7 +23,9 @@ const Header = () => {
     }, [location]);
 
     const controlNavbar = () => {
+        console.log(window.scrollY)
         if (window.scrollY > 200) {
+            //实现往上滑动会出现
             if (window.scrollY > lastScrollY && !mobileMenu) {
                 setShow("hide");
             } else {
