@@ -12,14 +12,7 @@ import PosterFallback from "../../assets/no-poster.png";
 const MovieCard = ({ }) => {
 
     return (
-        <div
-            className="movieCard"
-            onClick={() =>
-                navigate(`/${data.media_type || mediaType}/${data.id}`)
-            }
-        >
-
-        </div>
+       <div></div>
     );
 };
 
