@@ -7,10 +7,11 @@ import SwitchTabs from "../../../components/switchTabs/SwitchTabs";
 import useFetch from "../../../hooks/useFetch";
 
 const Trending = () => {
-  
+    const [endpoint, setEndpoint] = useState("day");
+    const { data, loading } = useFetch(`/trending/movie/${endpoint}`);
     return (
         <div className="carouselSection">
-        
+        <Carousel/>
         </div>
     );
 };

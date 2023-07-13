@@ -21,14 +21,14 @@ const Carousel = ({}) => {
     const skItem = () => {
         return (
             <div className="skeletonItem">
-               hell
+               
             </div>
         );
     };
 
     return (
         <div className="carousel">
-      
+      hell
         </div>
     );
 };
