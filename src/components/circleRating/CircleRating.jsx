@@ -6,7 +6,17 @@ import "./style.scss";
 
 const CircleRating = ({ rating }) => {
     return (
-     <div></div>
+        <div className="circleRating">
+            <CircularProgressbar
+                value={rating}
+                maxValue={10}
+      
+                styles={buildStyles({
+                    pathColor:
+                        rating < 5 ? "red" : rating < 7 ? "orange" : "green",
+                })}
+            />
+        </div>
     );
 };
 
