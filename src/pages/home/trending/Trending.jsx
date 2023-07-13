@@ -14,7 +14,11 @@ const Trending = () => {
     };
     return (
         <div className="carouselSection">
-        <Carousel/>
+            <ContentWrapper>
+                <span className="carouselTitle">Trending</span>
+                <SwitchTabs data={["Day", "Week"]} onTabChange={onTabChange} />
+            </ContentWrapper>
+            <Carousel data={data?.results} loading={loading} />
         </div>
     );
 };
