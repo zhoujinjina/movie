@@ -7,7 +7,12 @@ import SwitchTabs from "../../../components/switchTabs/SwitchTabs";
 import useFetch from "../../../hooks/useFetch";
 
 const Popular = () => {
-
+    const [endpoint, setEndpoint] = useState("day");
+    const { data, loading } = useFetch(`/popular/movie/${endpoint}`);
+    console.log()
+    const onTabChange = (tab) => {
+        setEndpoint(tab === "Day" ? "day" : "week");
+    };
     return (
         <div>
             
