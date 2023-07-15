@@ -8,7 +8,7 @@ import useFetch from "../../../hooks/useFetch";
 
 const Trending = () => {
     const [endpoint, setEndpoint] = useState("day");
-    const { data, loading } = useFetch(`/trending/movie/${endpoint}`);
+    const { data, loading } = useFetch(`/trending/movie/${endpoint}?language=zh-CN`);
     console.log()
     const onTabChange = (tab) => {
         setEndpoint(tab === "Day" ? "day" : "week");
@@ -16,7 +16,7 @@ const Trending = () => {
     return (
         <div className="carouselSection">
             <ContentWrapper>
-                <span className="carouselTitle">Trending</span>
+                <span className="carouselTitle">最近热播</span>
                 <SwitchTabs data={["Day", "Week"]} onTabChange={onTabChange} />
             </ContentWrapper>
             <Carousel data={data?.results} loading={loading} />

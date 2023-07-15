@@ -8,7 +8,7 @@ import useFetch from "../../../hooks/useFetch";
 
 const Popular = () => {
   const [endpoint, setEndpoint] = useState("movie");
-  const { data, loading } = useFetch(`/${endpoint}/popular`);
+  const { data, loading } = useFetch(`/${endpoint}/popular?language=zh-CN`);
   console.log();
   const onTabChange = (tab,index) => {
     setEndpoint(tab === "Movies" ? "movie" : "tv");
@@ -16,7 +16,7 @@ const Popular = () => {
   return (
     <div className="carouselSection">
       <ContentWrapper>
-        <span className="carouselTitle">Popular</span>
+        <span className="carouselTitle">最受欢迎的</span>
         <SwitchTabs data={["Movies", "TV Shows"]} onTabChange={onTabChange} />
       </ContentWrapper>
       <Carousel data={data?.results} loading={loading} />

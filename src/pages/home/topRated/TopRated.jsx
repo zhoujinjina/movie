@@ -7,17 +7,17 @@ import SwitchTabs from "../../../components/switchTabs/SwitchTabs";
 import useFetch from "../../../hooks/useFetch";
 
 const TopRated = () => {
-    const [endpoint, setEndpoint] = useState("day");
-    const { data, loading } = useFetch(`/trending/movie/${endpoint}`);
-    console.log();
+    const [endpoint, setEndpoint] = useState("movie");
+    const { data, loading } = useFetch(`/${endpoint}/top_rated?language=zh-CN `);
+    console.log(data);
     const onTabChange = (tab) => {
-      setEndpoint(tab === "Day" ? "day" : "week");
+      setEndpoint(tab === "Movies" ? "movie" : "tv");
     };
     return (
       <div className="carouselSection">
         <ContentWrapper>
-          <span className="carouselTitle">Popular</span>
-          <SwitchTabs data={["Day", "Week"]} onTabChange={onTabChange} />
+          <span className="carouselTitle">最受好评的</span>
+          <SwitchTabs data={["Movies", "TV Shows"]} onTabChange={onTabChange} />
         </ContentWrapper>
         <Carousel data={data?.results} loading={loading} />
       </div>
