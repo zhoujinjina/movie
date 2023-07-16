@@ -14,60 +14,62 @@ import Explore from "./pages/explore/Explore";
 import PageNotFound from "./pages/404/PageNotFound";
 
 function App() {
-    const dispatch = useDispatch();
-    const { url } = useSelector((state) => state.home);
-    console.log(url);
+  const dispatch = useDispatch();
+  const { url } = useSelector((state) => state.home);
+  console.log(url);
 
-    useEffect(() => {
-        fetchApiConfig();
-        genresCall();
-    }, []);
+  useEffect(() => {
+    fetchApiConfig();
+    genresCall();
+  }, []);
 
-    const fetchApiConfig = () => {
-        fetchDataFromApi("/configuration").then((res) => {
-            console.log(res);
+  const fetchApiConfig = () => {
+    fetchDataFromApi("/configuration").then((res) => {
+      console.log(res);
 
-            const url = {
-                backdrop: res.images.secure_base_url + "original",
-                poster: res.images.secure_base_url + "original",
-                profile: res.images.secure_base_url + "original",
-            };
+      const url = {
+        backdrop: res.images.secure_base_url + "original",
+        poster: res.images.secure_base_url + "original",
+        profile: res.images.secure_base_url + "original",
+      };
 
-            dispatch(getApiConfiguration(url));
-        });
-    };
+      dispatch(getApiConfiguration(url));
+    });
+  };
+  //电影类型
+  const genresCall = async () => {
+    let promises = [];
+    let endPoints = ["tv", "movie"];
+    let allGenres = {};
 
-    const genresCall = async () => {
-        let promises = [];
-        let endPoints = ["tv", "movie"];
-        let allGenres = {};
+    endPoints.forEach((url) => {
+      //获取所有的类型
+      promises.push(fetchDataFromApi(`/genre/${url}/list?language=zh-CN`));
+    });
 
-        endPoints.forEach((url) => {
-        promises.push(fetchDataFromApi(`/genre/${url}/list`));
-        });
+    const data = await Promise.all(promises);
 
-        const data = await Promise.all(promises);
+    data.map(({ genres }) => {
+      console.log(genres);
+      return genres.map((item) => (allGenres[item.id] = item));
+    });
+    console.log(allGenres);
+    dispatch(getGenres(allGenres));
+  };
 
-        data.map(({ genres }) => {
-            return genres.map((item) => (allGenres[item.id] = item));
-        });
-
-        dispatch(getGenres(allGenres));
-    };
-
-    return (
-        <BrowserRouter>
-            <Header />
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/:mediaType/:id" element={<Details />} />
-                <Route path="/search/:query" element={<SearchResult />} />
-                <Route path="/explore/:mediaType" element={<Explore />} />
-                <Route path="*" element={<PageNotFound />} />
-            </Routes>
-            <Footer />
-        </BrowserRouter>
-    );
+  return (
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/:mediaType/:id" element={<Details />} />
+        <Route path="/search/:query" element={<SearchResult />} />
+        <Route path="/explore/:mediaType" element={<Explore />} />
+        <Route path="*" element={<PageNotFound />} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
+  );
 }
 
 export default App;
