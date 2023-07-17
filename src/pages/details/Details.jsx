@@ -19,9 +19,12 @@ console.log(data);
     return (
         <div>
             <DetailsBanner video={data?.results?.[0]} crew={credits?.crew} />
+            {/* 主要演员 */}
             <Cast data={credits?.cast} loading={creditsLoading} />
-            {/* <VideosSection data={data} loading={loading} />
-            <Similar mediaType={mediaType} id={id} />
+            {/* 电影相关片段 */}
+            <VideosSection data={data} loading={loading} />
+            {/* 相似电影 */}
+            {/* <Similar mediaType={mediaType} id={id} />
             <Recommendation mediaType={mediaType} id={id} /> */}
         </div>
     );

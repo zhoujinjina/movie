@@ -7,12 +7,16 @@ import VideoPopup from "../../../components/videoPopup/VideoPopup";
 import Img from "../../../components/lazyLoadImage/Img";
 import { PlayIcon } from "../Playbtn";
 
-const VideosSection = () => {
-   
+const VideosSection = ({ data, loading }) => {
+    const [show, setShow] = useState(false);
+    const [videoId, setVideoId] = useState(null);
+
     const loadingSkeleton = () => {
         return (
-            <div>
-                
+            <div className="skItem">
+                <div className="thumb skeleton"></div>
+                <div className="row skeleton"></div>
+                <div className="row2 skeleton"></div>
             </div>
         );
     };
