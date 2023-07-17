@@ -11,7 +11,9 @@ import Recommendation from "./carousels/Recommendation";
 
 const Details = () => {
     const { mediaType, id } = useParams();
+    // 获取电影的相关信息
     const { data, loading } = useFetch(`/${mediaType}/${id}/videos?language=zh-CN`);
+    //获取该电影的工作人员相关信息
     const { data: credits, loading: creditsLoading } = useFetch(
         `/${mediaType}/${id}/credits`
     );
@@ -24,8 +26,8 @@ console.log(data);
             {/* 电影相关片段 */}
             <VideosSection data={data} loading={loading} />
             {/* 相似电影 */}
-            {/* <Similar mediaType={mediaType} id={id} />
-            <Recommendation mediaType={mediaType} id={id} /> */}
+            <Similar mediaType={mediaType} id={id} />
+            <Recommendation mediaType={mediaType} id={id} />
         </div>
     );
 };

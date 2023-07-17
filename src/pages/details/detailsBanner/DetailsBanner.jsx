@@ -15,6 +15,7 @@ const DetailsBanner = ({ video, crew }) => {
   const [show, setShow] = useState(false);
   const [videoId, setVideoId] = useState(null);
   const { mediaType, id } = useParams();
+  // 获取电影的海报 类型 上映时间 评分 状态等信息
   const { data, loading } = useFetch(`/${mediaType}/${id}?language=zh-CN`);
   //   获取congig
   const { url } = useSelector((state) => state.home);
