@@ -3,10 +3,10 @@ import ReactPlayer from "react-player/youtube";
 
 import "./style.scss";
 
-const VideoPopup = ({ }) => {
+const VideoPopup = ({show,setShow,videoId,setVideoId }) => {
  
     return (
-        <ReactPlayer url='https://www.youtube.com/watch?v=dQw4w9WgXcQ' />
+        <ReactPlayer url={`https://www.youtube.com/watch?v=${videoId}`} />
     );
 };
 
