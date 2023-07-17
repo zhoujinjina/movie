@@ -7,14 +7,53 @@ import ContentWrapper from "../../../components/contentWrapper/ContentWrapper";
 import Img from "../../../components/lazyLoadImage/Img";
 import avatar from "../../../assets/avatar.png";
 
-const Cast = ({data,loading}) => {
-    const {url}=useSelector(state=>state.home)
-console.log(url)
- console.log(data)
+const Cast = ({ data, loading }) => {
+    const { url } = useSelector((state) => state.home);
+
+    const skeleton = () => {
+        return (
+            <div className="skItem">
+                <div className="circle skeleton"></div>
+                <div className="row skeleton"></div>
+                <div className="row2 skeleton"></div>
+            </div>
+        );
+    };
     return (
-       <div style={{height:'100px',width:'100px',borderRadius:"50%"}}>
-        <img src={url.profile+data?.[0].profile_path} alt="" />
-       </div>
+        <div className="castSection">
+            <ContentWrapper>
+                <div className="sectionHeading">Top Cast</div>
+                {!loading ? (
+                    <div className="listItems">
+                        {data?.map((item) => {
+                            let imgUrl = item.profile_path
+                                ? url.profile + item.profile_path
+                                : avatar;
+                            return (
+                                <div key={item.id} className="listItem">
+                                    <div className="profileImg">
+                                        <Img src={imgUrl} />
+                                    </div>
+                                    <div className="name">{item.name}</div>
+                                    <div className="character">
+                                        {item.character}
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </div>
+                ) : (
+                    <div className="castSkeleton">
+                        {skeleton()}
+                        {skeleton()}
+                        {skeleton()}
+                        {skeleton()}
+                        {skeleton()}
+                        {skeleton()}
+                    </div>
+                )}
+            </ContentWrapper>
+        </div>
     );
 };
 
