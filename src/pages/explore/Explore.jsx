@@ -27,12 +27,6 @@ const sortbyData = [
 ];
 
 const Explore = () => {
-    const [data, setData] = useState(null);
-    const [pageNum, setPageNum] = useState(1);
-    const [loading, setLoading] = useState(false);
-    const [genre, setGenre] = useState(null);
-    const [sortby, setSortby] = useState(null);
-    const { mediaType } = useParams();
 
 
     return (
