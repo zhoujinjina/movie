@@ -24,7 +24,7 @@ const VideosSection = ({ data, loading }) => {
     return (
         <div className="videosSection">
             <ContentWrapper>
-                <div className="sectionHeading">Official Videos</div>
+                <div className="sectionHeading">{data?.results.length>0?"官方视频":""}</div>
                 {!loading ? (
                     <div className="videos">
                         {data?.results?.map((video) => (

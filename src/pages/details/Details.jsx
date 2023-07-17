@@ -11,7 +11,7 @@ import Recommendation from "./carousels/Recommendation";
 
 const Details = () => {
     const { mediaType, id } = useParams();
-    const { data, loading } = useFetch(`/${mediaType}/${id}/videos`);
+    const { data, loading } = useFetch(`/${mediaType}/${id}/videos?language=zh-CN`);
     const { data: credits, loading: creditsLoading } = useFetch(
         `/${mediaType}/${id}/credits`
     );
