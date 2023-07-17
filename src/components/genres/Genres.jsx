@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 import "./style.scss";
-
+// 种类
 const Genres = ({ data }) => {
     const { genres } = useSelector((state) => state.home);
 
