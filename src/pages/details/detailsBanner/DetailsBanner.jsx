@@ -2,9 +2,6 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import dayjs from "dayjs";
-
-import "./style.scss";
-
 import ContentWrapper from "../../../components/contentWrapper/ContentWrapper";
 import useFetch from "../../../hooks/useFetch";
 import Genres from "../../../components/genres/Genres";
@@ -13,13 +10,13 @@ import Img from "../../../components/lazyLoadImage/Img.jsx";
 import PosterFallback from "../../../assets/no-poster.png";
 import { PlayIcon } from "../Playbtn";
 import VideoPopup from "../../../components/videoPopup/VideoPopup";
-
+import "./style.scss";
 const DetailsBanner = ({ video, crew }) => {
   const [show, setShow] = useState(false);
   const [videoId, setVideoId] = useState(null);
   const { mediaType, id } = useParams();
   const { data, loading } = useFetch(`/${mediaType}/${id}?language=zh-CN`);
-//   获取congig
+  //   获取congig
   const { url } = useSelector((state) => state.home);
   // 类型
   const _genres = data?.genres?.map((g) => g.id);
@@ -65,7 +62,7 @@ const DetailsBanner = ({ video, crew }) => {
                       ).format("YYYY")})`}
                     </div>
                     <div className="subtitle">{data.tagline}</div>
-
+                    {/* 电影类型 */}
                     <Genres data={_genres} />
 
                     <div className="row">
@@ -111,7 +108,7 @@ const DetailsBanner = ({ video, crew }) => {
                         </div>
                       )}
                     </div>
-
+                    {/* 导演信息 */}
                     {director?.length > 0 && (
                       <div className="info">
                         <span className="text bold">导演: </span>
@@ -125,7 +122,7 @@ const DetailsBanner = ({ video, crew }) => {
                         </span>
                       </div>
                     )}
-
+                    {/* 编剧信息 */}
                     {writer?.length > 0 && (
                       <div className="info">
                         <span className="text bold">编剧: </span>

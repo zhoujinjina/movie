@@ -6,7 +6,7 @@ import "./style.scss";
 const VideoPopup = ({ }) => {
  
     return (
-        <div>我是VideoPopup</div>
+        <ReactPlayer url='https://www.youtube.com/watch?v=dQw4w9WgXcQ' />
     );
 };
 
