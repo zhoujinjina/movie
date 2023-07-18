@@ -9,15 +9,12 @@ import ContentWrapper from "../../components/contentWrapper/ContentWrapper";
 import MovieCard from "../../components/movieCard/MovieCard";
 import Spinner from "../../components/spinner/Spinner";
 import noResults from "../../assets/no-results.png";
-
+import useFetch from "../../hooks/useFetch";
 const SearchResult = () => {
-   
-
-    return (
-        <div>
-            
-        </div>
-    );
+  const { query } = useParams();
+  const data = useFetch(`/search/${query}`);
+ console.log(data)
+  return <div>{query}</div>;
 };
 
 export default SearchResult;
