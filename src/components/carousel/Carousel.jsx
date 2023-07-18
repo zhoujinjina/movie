@@ -19,7 +19,7 @@ const Carousel = ({ data, loading, endpoint, title }) => {
     const carouselContainer = useRef();
     const { url } = useSelector((state) => state.home);
     const navigate = useNavigate();
-
+console.log("电影轮播组件")
     const navigation = (dir) => {
         const container = carouselContainer.current;
 
