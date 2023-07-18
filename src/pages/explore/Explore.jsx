@@ -35,7 +35,7 @@ const Explore = () => {
     const { mediaType } = useParams();
 
     const { data: genresData } = useFetch(`/genre/${mediaType}/list?language=zh-CN`);
-
+console.log(genresData?.genres)
     const fetchInitialData = () => {
         setLoading(true);
         fetchDataFromApi(`/discover/${mediaType}?language=zh-cn`, filters).then((res) => {
@@ -112,6 +112,7 @@ const Explore = () => {
                             value={genre}
                             closeMenuOnSelect={false}
                             options={genresData?.genres}
+                            // 格式不符合要求
                             getOptionLabel={(option) => option.name}
                             getOptionValue={(option) => option.id}
                             onChange={onChange}
