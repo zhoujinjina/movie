@@ -12,9 +12,23 @@ import noResults from "../../assets/no-results.png";
 import useFetch from "../../hooks/useFetch";
 const SearchResult = () => {
   const { query } = useParams();
-  const data = useFetch(`/search/${query}`);
- console.log(data)
-  return <div>{query}</div>;
+  const [data,setData] = useState([]);
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState();
+  const fetchInitialPageDate =async () => {
+    setLoading(true)
+    const data=await fetchDataFromApi(`/search/multi?query=${query}&page=${page}`)
+    console.log(data)
+    setData(data.results)
+  }
+useEffect(()=>{
+  fetchInitialPageDate()
+},[page])
+  return (
+    <div className="searchResultsPage">
+     
+    </div>
+  );
 };
 
 export default SearchResult;
