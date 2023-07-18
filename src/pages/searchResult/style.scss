@@ -4,7 +4,16 @@
     padding-top: 100px;
     .resultNotFound {
         font-size: 24px;
-        color: var(--black-light);
+        color: white;
+    }
+    .resultNotFoundImg{
+        width: 40vh;
+        height: 40vh;
+        img{
+            height: 100%;
+            object-fit: center;
+            object-position: center;
+        }
     }
     .pageTitle {
         font-size: 24px;

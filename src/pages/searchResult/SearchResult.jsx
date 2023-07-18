@@ -5,7 +5,7 @@ import "./style.scss";
 import { fetchDataFromApi } from "../../utils/api";
 import ContentWrapper from "../../components/contentWrapper/ContentWrapper";
 import MovieCard from "../../components/movieCard/MovieCard";
-import Spinner from "../../components/spinner/Spinner";
+import Loading from "../../components/loading/Loading";
 import noResults from "../../assets/no-results.png";
 
 const SearchResult = () => {
@@ -44,24 +44,25 @@ const SearchResult = () => {
     useEffect(() => {
         // setPageNum(1);
         fetchInitialData();
+        
     }, [query]);
-
+    console.log(data)
     return (
         <div className="searchResultsPage">
-            {loading && <Spinner initial={true} />}
+            {loading && <Loading initial={true} />}
             {!loading && (
                 <ContentWrapper>
                     {data?.results?.length > 0 ? (
                         <>
                             <div className="pageTitle">
-                                {`搜索到'${data.results.length}个与${query}结果'`}
+                                {`搜索到${data.total_results}个与“${query}”相关的结果`}
                             </div>
                             <InfiniteScroll
                                 className="content"
                                 dataLength={data?.results?.length || []}
                                 next={fetchNextPageData}
                                 hasMore={pageNum <= data?.total_pages}
-                                loader={<Spinner />}
+                                loader={<Loading />}
                             >
                                 {data?.results.map((item, index) => {
                                     if (item.media_type === "person") return;
@@ -76,9 +77,12 @@ const SearchResult = () => {
                             </InfiniteScroll>
                         </>
                     ) : (
+                        <>
                         <span className="resultNotFound">
                             抱歉，未找到与{query}相关的结果！
                         </span>
+                        <div className="resultNotFoundImg"><img src={noResults} alt="" /></div>
+                        </>
                     )}
                 </ContentWrapper>
             )}
