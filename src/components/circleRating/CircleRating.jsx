@@ -5,6 +5,7 @@ import "react-circular-progressbar/dist/styles.css";
 import "./style.scss";
 
 const CircleRating = ({ rating }) => {
+    console.log(rating);
     return (
         <div className="circleRating">
             <CircularProgressbar
