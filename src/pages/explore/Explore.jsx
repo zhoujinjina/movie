@@ -34,11 +34,11 @@ const Explore = () => {
     const [sortBy, setSortBy] = useState(null);
     const { mediaType } = useParams();
 
-    const { data: genresData } = useFetch(`/genre/${mediaType}/list`);
+    const { data: genresData } = useFetch(`/genre/${mediaType}/list?language=zh-CN`);
 
     const fetchInitialData = () => {
         setLoading(true);
-        fetchDataFromApi(`/discover/${mediaType}`, filters).then((res) => {
+        fetchDataFromApi(`/discover/${mediaType}?language=zh-cn`, filters).then((res) => {
             setData(res);
             setPageNum((prev) => prev + 1);
             setLoading(false);
@@ -47,7 +47,7 @@ const Explore = () => {
 
     const fetchNextPageData = () => {
         fetchDataFromApi(
-            `/discover/${mediaType}?page=${pageNum}`,
+            `/discover/${mediaType}?page=${pageNum}?language=zh-CN`,
             filters
         ).then((res) => {
             if (data?.results) {
@@ -77,7 +77,7 @@ const Explore = () => {
             if (action.action !== "clear") {
                 filters.sort_by = selectedItems.value;
             } else {
-                delete filters.sort_by;
+                 filters.sort_by=null;
             }
         }
 
@@ -88,7 +88,7 @@ const Explore = () => {
                 genreId = JSON.stringify(genreId).slice(1, -1);
                 filters.with_genres = genreId;
             } else {
-                delete filters.with_genres;
+                 filters.with_genres=null;
             }
         }
 
@@ -102,8 +102,8 @@ const Explore = () => {
                 <div className="pageHeader">
                     <div className="pageTitle">
                         {mediaType === "tv"
-                            ? "电影"
-                            : "电视剧"}
+                            ? "电视剧"
+                            : "电影"}
                     </div>
                     <div className="filters">
                         <Select
