@@ -20,10 +20,18 @@ const SearchResult = () => {
     const data=await fetchDataFromApi(`/search/multi?query=${query}&page=${page}`)
     console.log(data)
     setData(data.results)
+    setPage(page+1)
+    setLoading(false)
+  }
+  const fetchNextPageData=async () => {
+    const nextData=await fetchDataFromApi(`/search/multi?query=${query}&page=${page}`)
+    setData([...data,...nextData.results])
+    console.log(data)
   }
 useEffect(()=>{
-  fetchInitialPageDate()
-},[page])
+  
+
+},[query])
   return (
     <div className="searchResultsPage">
      
