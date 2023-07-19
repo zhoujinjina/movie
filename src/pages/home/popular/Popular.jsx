@@ -9,7 +9,6 @@ import useFetch from "../../../hooks/useFetch";
 const Popular = () => {
   const [endpoint, setEndpoint] = useState("movie");
   const { data, loading } = useFetch(`/${endpoint}/popular?language=zh-CN`);
-  console.log();
   const onTabChange = (tab,index) => {
     setEndpoint(tab === "Movies" ? "movie" : "tv");
   };
