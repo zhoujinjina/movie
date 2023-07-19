@@ -43,10 +43,9 @@ const SearchResult = () => {
   };
 
   useEffect(() => {
-    // setPageNum(1);
+    setPageNum(1);
     fetchInitialData();
   }, [query]);
-  console.log(data);
   return (
     <div className="searchResultsPage">
       {loading && <Loading initial={true} />}
