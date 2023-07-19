@@ -9,6 +9,7 @@ import useFetch from "../../../hooks/useFetch";
 const TopRated = () => {
     const [endpoint, setEndpoint] = useState("movie");
     const { data, loading } = useFetch(`/${endpoint}/top_rated?language=zh-CN `);
+    console.log(data);
     const onTabChange = (tab) => {
       setEndpoint(tab === "Movies" ? "movie" : "tv");
     };
