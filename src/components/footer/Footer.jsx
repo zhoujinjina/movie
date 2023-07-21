@@ -6,6 +6,7 @@ import ContentWrapper from "../contentWrapper/ContentWrapper";
 import "./style.scss";
 
 const Footer = () => {
+  console.log()
   return (
     <footer className="footer">
       <ContentWrapper>
