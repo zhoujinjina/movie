@@ -21,7 +21,7 @@ const Header = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [location]);
-
+console.log()
     const controlNavbar = () => {
         if (window.scrollY > 200) {
             //实现往上滑动会出现
