@@ -11,7 +11,6 @@ import PosterFallback from "../../assets/no-poster.png";
 
 const MovieCard = ({ data, fromSearch, mediaType }) => {
   const { url } = useSelector((state) => state.home);
-  console.log()
   const navigate = useNavigate();
   const posterUrl = data.poster_path
     ? url.poster + data.poster_path
