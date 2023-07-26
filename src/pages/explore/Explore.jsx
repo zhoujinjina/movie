@@ -35,7 +35,6 @@ const Explore = () => {
     const { mediaType } = useParams();
 
     const { data: genresData } = useFetch(`/genre/${mediaType}/list?language=zh-CN`);
-console.log(genresData?.genres)
     const fetchInitialData = () => {
         setLoading(true);
         fetchDataFromApi(`/discover/${mediaType}?language=zh-cn`, filters).then((res) => {
