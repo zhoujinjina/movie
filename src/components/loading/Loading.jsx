@@ -3,7 +3,7 @@ import React from "react";
 import "./style.scss";
 
 const Loading = ({ initial }) => {
-    console.log("Loading")
+
     return (
         <div className={`loadingSpinner ${initial ? "initial" : ""}`}>
             <svg className="spinner" viewBox="0 0 50 50">
