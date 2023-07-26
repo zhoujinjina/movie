@@ -5,7 +5,7 @@ import "./style.scss";
 // 种类
 const Genres = ({ data }) => {
   const { genres } = useSelector((state) => state.home);
-  console.log(genres);
+
   return (
     <div className="genres">
       {data?.map((g) => {
