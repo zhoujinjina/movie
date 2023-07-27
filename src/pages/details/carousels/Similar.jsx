@@ -5,7 +5,6 @@ import useFetch from "../../../hooks/useFetch";
 
 const Similar = ({ mediaType, id }) => {
     //获取相似的电影
-    console.log()
     const { data, loading, error } = useFetch(`/${mediaType}/${id}/similar?language=zh-cn`);
 
     const title = mediaType === "tv" ? "相似电视剧" : "相似电影";
