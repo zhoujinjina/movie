@@ -17,7 +17,7 @@ const DetailsBanner = ({ video, crew }) => {
   const { mediaType, id } = useParams();
   // 获取电影的海报 类型 上映时间 评分 状态等信息
   const { data, loading } = useFetch(`/${mediaType}/${id}?language=zh-CN`);
-  //   获取congig
+  //   获取config
   const { url } = useSelector((state) => state.home);
   // 类型
   const _genres = data?.genres?.map((g) => g.id);
@@ -33,7 +33,7 @@ const DetailsBanner = ({ video, crew }) => {
     const minutes = totalMinutes % 60;
     return `${hours}h${minutes > 0 ? ` ${minutes}m` : ""}`;
   };
-
+console.log()
   return (
     <div className="detailsBanner">
       {!loading ? (
