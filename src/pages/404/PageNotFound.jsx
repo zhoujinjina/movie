@@ -5,7 +5,6 @@ import "./style.scss";
 import ContentWrapper from "../../components/contentWrapper/ContentWrapper";
 
 const PageNotFound = () => {
-    console.log("Not Found");
     return (
         <div className="pageNotFound">
             <ContentWrapper>
