@@ -9,3 +9,21 @@
 ![image](https://github.com/zhoujinjina/movie/assets/100776914/07139351-3e8e-423b-b27d-1a6600ef6bfa)
 #电影推荐模块
 ![image](https://github.com/zhoujinjina/movie/assets/100776914/af657e12-338a-4348-b3b0-dfe38be356fa)
+- **Clone：**
+
+```text
+# GitHub
+git clone https://github.com/zhoujinjina/magical-chat.git
+```
+
+- **Install：**
+
+```text
+npm install
+cnpm install
+```
+
+- **Run：**
+
+```text
+npm run dev
